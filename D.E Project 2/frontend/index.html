@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AttendanceOS - Face Recognition</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Auth View -->
+        <div id="auth-view" class="view active">
+            <div class="glass-card auth-card">
+                <h1 class="glow-text">AttendanceOS</h1>
+                <p class="subtitle">Secure Face Recognition System</p>
+
+                <!-- Login Form -->
+                <form id="login-form">
+                    <div class="input-group">
+                        <label for="login-username">Username</label>
+                        <input type="text" id="login-username" required autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="login-password">Password</label>
+                        <input type="password" id="login-password" required>
+                    </div>
+                    <button type="submit" class="primary-btn">Login</button>
+                    <p class="switch-auth">New user? <a href="#" id="show-register">Register here</a></p>
+                </form>
+
+                <!-- Register Form (Hidden by default) -->
+                <form id="register-form" style="display: none;">
+                    <div class="input-group">
+                        <label for="reg-name">Full Name</label>
+                        <input type="text" id="reg-name" name="name" required autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-username">Username</label>
+                        <input type="text" id="reg-username" name="username" required autocomplete="off">
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" name="password" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="reg-role">Role</label>
+                        <select id="reg-role" name="role">
+                            <option value="student">Student</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="input-group" id="reg-face-group">
+                        <label for="reg-face">Face Photo (Required for Student)</label>
+                        <input type="file" id="reg-face" name="face_image" accept="image/jpeg, image/png">
+                    </div>
+                    <button type="submit" class="primary-btn">Register</button>
+                    <p class="switch-auth">Already have an account? <a href="#" id="show-login">Login here</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dashboard View -->
+        <div id="dashboard-view" class="view">
+            <nav class="navbar glass-nav">
+                <h2 class="glow-text">AttendanceOS</h2>
+                <div class="user-info">
+                    <span id="user-greeting">Welcome!</span>
+                    <button id="logout-btn" class="secondary-btn">Logout</button>
+                </div>
+            </nav>
+
+            <main class="dashboard-content">
+                <div id="admin-dashboard" class="role-dashboard" style="display: none;">
+                    <h3>Admin Dashboard</h3>
+                    <div class="stats-grid" id="admin-stats"></div>
+                </div>
+
+                <div id="teacher-dashboard" class="role-dashboard" style="display: none;">
+                    <h3>Teacher Dashboard</h3>
+                    <div class="stats-grid" id="teacher-stats"></div>
+                </div>
+
+                <div id="student-dashboard" class="role-dashboard" style="display: none;">
+                    <h3>Student Dashboard</h3>
+                    <div class="stats-grid" id="student-stats"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="toast-container"></div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
